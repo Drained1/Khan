@@ -11,6 +11,7 @@ function getJSON(a, b) {
 }
 
 function editDiv(){
+    document.getElementById("loading").style.display="block";
     getJSON("https://www.khanacademy.org/api/internal/scratchpads/top?casing=camel&sort=3&page=2&limit="+amount_of_programs+"&format=pretty&topic_id=xffde7c31", function(data){
         for(var i = amount_of_programs-6; i < data.scratchpads.length; i++){
             var info = data.scratchpads[i]
@@ -24,6 +25,7 @@ function editDiv(){
                 programs.innerHTML += '<br><br>'
             }
         }
+        document.getElementById("loading").style.display="none";
     })
 }
 
@@ -42,7 +44,7 @@ getJSON("https://www.khanacademy.org/api/internal/scratchpads/top?casing=camel&s
     }
 })
 
-function addp(){
+function addp(){ 
     amount_of_programs += 6;
-    editDiv()
+    editDiv() 
 }
